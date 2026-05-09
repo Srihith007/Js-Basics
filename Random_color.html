@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Color Generator</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+     
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      margin-bottom: 20px;
+    }
+
+    #colorCode {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      margin: 20px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #btn {
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background-color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Hit the button until you like the color</h1>
+  <button id="btn">🎨 CLICK ME</button>
+  <h2 id="colorCode">#FFFFFF</h2>
+
+  <script>
+    const button = document.getElementById("btn");
+    const colorCode = document.getElementById("colorCode");
+
+    function generateRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+
+      document.body.style.backgroundColor = color;
+      colorCode.textContent = color;
+    }
+
+    button.addEventListener("click", generateRandomColor);
+  </script>
+
+</body>
+</html>
